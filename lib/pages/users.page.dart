@@ -6,6 +6,7 @@ class UsersPage extends StatefulWidget {
 
 class _UsersPageState extends State<UsersPage> {
   String val =" ";
+  bool notVisible = false;
   TextEditingController queryTextEditingController = new TextEditingController();
 
   @override
@@ -21,6 +22,7 @@ class _UsersPageState extends State<UsersPage> {
                    child: Container(
                        padding: EdgeInsets.all(10),
                        child: TextFormField(
+                         obscureText: notVisible,
                          onChanged:(value){
                            setState((){
                              val=value;
@@ -28,7 +30,15 @@ class _UsersPageState extends State<UsersPage> {
                          },
                          controller: queryTextEditingController,
                          decoration: InputDecoration(
-                             suffixIcon: Icon(Icons.visibility),
+                             suffixIcon: IconButton(
+                               onPressed:(){
+                                 setState(() {
+                                    notVisible=!notVisible;
+                                 });
+                               },
+                               icon: Icon(notVisible==true?Icons.visibility_off:Icons.visibility) ,
+
+                             ),
                              contentPadding: EdgeInsets.all(5),
                              border: OutlineInputBorder(
                                  borderRadius: BorderRadius.circular(50),
