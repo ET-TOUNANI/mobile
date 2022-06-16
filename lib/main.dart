@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "/": (context)=>HomePage(),
-        "/user":(context)=>UsersPage()
+        "/user":(context)=>UsersPage(),
+
       },
-      initialRoute: "/user",
+      initialRoute: "/",
     );
   }
 }
